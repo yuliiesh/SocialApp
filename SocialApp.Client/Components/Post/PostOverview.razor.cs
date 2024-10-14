@@ -5,7 +5,9 @@ namespace SocialApp.Client.Components.Post;
 
 public partial class PostOverview : ComponentBase
 {
-    [Parameter]
-    public PostDto Post { get; set; }
+    private bool _showCommnets = false;
 
+    [Parameter] public PostDto Post { get; set; }
+
+    private void ToggleShowCommnets() => _showCommnets = !_showCommnets;
 }

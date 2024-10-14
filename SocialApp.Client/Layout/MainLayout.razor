@@ -1,4 +1,6 @@
 ﻿@inherits LayoutComponentBase
+@inject NavigationManager Navigation;
+
 <div class="wrapper">
     <nav class="nav">
         <div class="nav-logo">
@@ -8,8 +10,8 @@
             <input placeholder="Search friends, posts ect..."/>
         </div>
         <div class="nav-button">
-            <button class="btn white-btn" id="loginBtn" onclick="login()">Profile</button>
-            <button class="btn" id="registerBtn" onclick="register()">Blog</button>
+            <button class="btn white-btn" @onclick="() => ToProfile()">Profile</button>
+            <button class="btn" @onclick="() => ToPosts()">Blog</button>
         </div>
         <div class="nav-menu-btn">
             <i class="bx bx-menu" onclick="myMenuFunction()"></i>
@@ -20,3 +22,9 @@
         @Body
     </main>
 </div>
+
+@code{
+    private void ToProfile() => Navigation.NavigateTo("profile");
+
+    private void ToPosts() => Navigation.NavigateTo("posts");
+}

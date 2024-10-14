@@ -1,0 +1,86 @@
+﻿@page "/Profile"
+@using SocialApp.Client.Components.Post
+@inherits SocialApp.Client.Components.Base.LoadingComponent
+
+<div class="profile-container">
+    <div class="profile-details">
+        <div class="pd-left">
+            <div class="pd-row">
+                <img src="images/photo.jpg" class="pd-image">
+                <div>
+                    <h3>Pcholin</h3>
+                    <p>120 Friends - 20 mutuals </p>
+                    <img src="images/img-friend-1.png">
+                    <img src="images/img-friend-2.png">
+                    <img src="images/img-friend-3.png">
+                    <img src="images/img-friend-4.png">
+                </div>
+            </div>
+        </div>
+
+        <div class="pd-right">
+            <button type="button"><img src="images/user-plus-solid-24.png">Friends</button>
+            <button type="button"><img src="images/envelope-solid-24.png">Message</button>
+            <a href =""><img src="images/dots-horizontal-rounded-regular-24.png"></a>
+        </div>
+    </div>
+
+    <div class="profile-info">
+        <div class="info-col">
+            <div class="profile-intro">
+                <h3>Intro</h3>
+                <p class="intro-text">oherhgeiugruiegheighr</p>
+                <hr>
+                <ul>
+                    <li>Pchil-Pcholin</li>
+                    <li>Have Pou bestfriend</li>
+                    <li>Zelena-banda</li>
+                </ul>
+            </div>
+
+            <div class="profile-intro">
+                <div class="title-box">
+                    <h3>Photos</h3>
+                    <a href="">All photos</a>
+                </div>
+                <div class="photo-box">
+                    <div><img src="images/img-friend-1.png"></div>
+                    <div><img src="images/img-friend-2.png"></div>
+                    <div><img src="images/img-friend-3.png"></div>
+                    <div><img src="images/img-friend-4.png"></div>
+                </div>
+            </div>
+
+            <div class="profile-intro">
+                <div class="title-box">
+                    <h3>Friends</h3>
+                    <a href="">All friends</a>
+                </div>
+                <p> 120 (20 mutual)</p>
+                <div class="friends-box">
+                    <div><img src="images/img-friend-1.png"><p>Pes Patron</p></div>
+                    <div><img src="images/img-friend-2.png"><p>Racoon</p></div>
+                    <div><img src="images/img-friend-3.png"><p>Black Pou</p></div>
+                    <div><img src="images/img-friend-4.png"><p>Me</p></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="post-col">
+            <CreatePost/>
+            @if (Loading)
+            {
+                <div>Loading...</div>
+            }
+            else
+            {
+                @foreach (var post in _posts)
+                {
+                    <PostOverview Post="post"/>
+                }
+            }
+        </div>
+    </div>
+
+</div>

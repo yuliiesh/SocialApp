@@ -1,0 +1,196 @@
+﻿.profile-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color:#626262;
+    width: 1000px;
+}
+
+.cover-img {
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 14px;
+    max-width: 1000px; /* Максимальна ширина зображення */
+    border-radius: 6px; /* Закруглені кути */
+    overflow: hidden; /* Запобігає виходу частин зображення за межі контейнера */
+    height: auto; /* Зберігає пропорції зображення */
+    display: block; /* Прибирає пробіли під зображенням */
+}
+
+.profile-details {
+    background: #fff;
+    padding: 20px;
+    padding-bottom: 35px;
+    border-radius: 4px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.pd-row {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 800px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.pd-image {
+    width: 100px;
+    margin-right: 20px;
+    border-radius: 6px;
+}
+
+.pd-row div h3 {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.pd-row div p {
+    font-size: 13px;
+}
+
+.pd-row div img {
+    width: 25px;
+    border-radius: 50%;
+    margin-top: 10px;
+}
+
+.pd-right button {
+    background: rgba(226, 226, 226, 0.7);
+    border: 0;
+    outline: 0;
+    padding: 6px 10px;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 30px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.pd-right button img {
+    height: 23px;
+    margin-right: 10px;
+}
+
+.pd-right {
+    text-align: right;
+    align-items: center;
+
+}
+
+.pd-right a{
+    background: rgba(226, 226, 226, 0.7);
+    border-radius: 30px;
+    padding: 10px;
+    display: inline-flex;
+}
+
+.pd-right a img {
+    width: 20px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-top: 8px;
+    padding-bottom: 0;
+}
+
+.info-col {
+    flex-basis: 39%;
+    min-width: 300px;
+}
+
+.post-col {
+    flex-basis: 66%;
+    max-width: 600px;
+}
+
+.profile-intro {
+    background: #fff;
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 11px;
+    &:first-child {
+        padding-bottom: 5px;
+    }
+}
+
+.profile-intro h3{
+    font-weight: 600;
+}
+
+.intro-text {
+    font-size: 15px;
+    color:#626262;
+}
+.profile-intro hr {
+    margin: 3px 0;
+}
+
+.profile-intro ul li {
+    list-style: none;
+    font-size: 15px;
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+}
+
+.title-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title-box a {
+    text-decoration: none;
+    color: #626262;
+    font-size: 14px;
+}
+
+.photo-box {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 10px;
+    margin-top: 15px;
+}
+
+.photo-box div img{
+    width: 100%;
+    border-radius: 50%;
+}
+
+.profile-intro p{
+    font-size: 14px;
+    color:#626262;
+}
+
+.friends-box {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-gap: 10px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.friends-box div img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.friends-box div {
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.friends-box p {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+}

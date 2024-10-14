@@ -16,13 +16,35 @@
 
     <div class="post-row">
         <div class="activity-icons">
-            <div><img src="images/like-regular-24.png"> 120</div>
-            <div><img src="images/comment-regular-24.png"> 10</div>
-            <div><img src="images/share-regular-24.png"> 20</div>
-        </div>
-
-        <div class="post-profile-icon">
-
+            <button><img src="images/like-regular-24.png"> 120</button>
+            <button onclick="@ToggleShowCommnets" class="comments-icon"><img src="images/comment-regular-24.png"> 10</button>
+            <button><img src="images/share-regular-24.png"> 20</button>
         </div>
     </div>
+
+    @if (_showCommnets)
+    {
+        <div class="comments-section">
+            <div class="comment">
+                <div class="user-profile">
+                    <img src="images/photo.jpg" alt="commenterPhoto" class="commenter-photo">
+                    <div>
+                        <p>Commenter1</p>
+                        <span>October 14 2024, 10:00</span>
+                    </div>
+                </div>
+                <div class="comment-text">This is a sample comment text.</div>
+            </div>
+            <div class="comment">
+                <div class="user-profile">
+                    <img src="images/photo.jpg" alt="commenterPhoto" class="commenter-photo">
+                    <div>
+                        <p>Commenter2</p>
+                        <span>October 14 2024, 10:05</span>
+                    </div>
+                </div>
+                <div class="comment-text">Another sample comment text.</div>
+            </div>
+        </div>
+    }
 </div>
