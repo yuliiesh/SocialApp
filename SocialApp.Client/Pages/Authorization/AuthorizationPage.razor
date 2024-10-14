@@ -1,0 +1,17 @@
+﻿@page "/authorize"
+@using SocialApp.Client.Components.Authorization
+
+@layout LoginLayout
+
+<div class="wrapper">
+    <div class="form-box">
+        @if (_loginAction)
+        {
+            <LoginComponent ChangeToRegistration="ChangeAction" OnLogin="Login"/>
+        }
+        else
+        {
+            <RegisterComponent ChangeToLogin="ChangeAction" OnRegister="Register"/>
+        }
+    </div>
+</div>

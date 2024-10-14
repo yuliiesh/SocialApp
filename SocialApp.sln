@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialApp.Client", "SocialApp.Client\SocialApp.Client.csproj", "{405B46D3-E170-4053-96CF-C19646C54097}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialApp.Api", "SocialApp.Api\SocialApp.Api.csproj", "{913D45A1-1B6E-43EF-8C0B-5CCA660829D3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7F772753-BD69-4D37-BF3E-55A3293C7628}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialApp.Data", "SocialApp.Data\SocialApp.Data.csproj", "{00D608C1-5018-4D32-A74A-1081CB9FBDA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialApp.Common", "SocialApp.Common\SocialApp.Common.csproj", "{36346887-390A-4096-A313-8EC9214EBB2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Migrations", "Migrations\Migrations.csproj", "{D9CF0E28-A7F5-42AE-993F-545EC247147F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{405B46D3-E170-4053-96CF-C19646C54097}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{405B46D3-E170-4053-96CF-C19646C54097}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{405B46D3-E170-4053-96CF-C19646C54097}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{405B46D3-E170-4053-96CF-C19646C54097}.Release|Any CPU.Build.0 = Release|Any CPU
+		{913D45A1-1B6E-43EF-8C0B-5CCA660829D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{913D45A1-1B6E-43EF-8C0B-5CCA660829D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{913D45A1-1B6E-43EF-8C0B-5CCA660829D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{913D45A1-1B6E-43EF-8C0B-5CCA660829D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00D608C1-5018-4D32-A74A-1081CB9FBDA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00D608C1-5018-4D32-A74A-1081CB9FBDA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00D608C1-5018-4D32-A74A-1081CB9FBDA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00D608C1-5018-4D32-A74A-1081CB9FBDA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36346887-390A-4096-A313-8EC9214EBB2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36346887-390A-4096-A313-8EC9214EBB2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36346887-390A-4096-A313-8EC9214EBB2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36346887-390A-4096-A313-8EC9214EBB2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9CF0E28-A7F5-42AE-993F-545EC247147F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9CF0E28-A7F5-42AE-993F-545EC247147F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9CF0E28-A7F5-42AE-993F-545EC247147F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9CF0E28-A7F5-42AE-993F-545EC247147F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

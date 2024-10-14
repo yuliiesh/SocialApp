@@ -1,0 +1,22 @@
+﻿@inherits LayoutComponentBase
+<div class="wrapper">
+    <nav class="nav">
+        <div class="nav-logo">
+            <p>LOGO .</p>
+        </div>
+        <div class="search" id="search">
+            <input placeholder="Search friends, posts ect..."/>
+        </div>
+        <div class="nav-button">
+            <button class="btn white-btn" id="loginBtn" onclick="login()">Profile</button>
+            <button class="btn" id="registerBtn" onclick="register()">Blog</button>
+        </div>
+        <div class="nav-menu-btn">
+            <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+        </div>
+    </nav>
+
+    <main style="overflow: hidden">
+        @Body
+    </main>
+</div>

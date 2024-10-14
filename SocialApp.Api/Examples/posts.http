@@ -1,0 +1,11 @@
+﻿POST localhost:5212/api/Posts
+Content-Type: application/json
+
+{
+  "Title": "Test2",
+  "Content": "Hello post 1234"
+}
+
+###
+
+GET localhost:5212/api/Posts

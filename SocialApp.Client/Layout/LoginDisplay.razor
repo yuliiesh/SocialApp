@@ -1,0 +1,25 @@
+﻿@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using SocialApp.Client.Authorization
+@inject NavigationManager Navigation
+
+<CascadingAuthenticationState>
+    <AuthorizeView>
+        <Authorized>
+            Hello, @context.User.Identity?.Name!
+            <button class="nav-link btn btn-link" @onclick="BeginLogOut">Log out</button>
+        </Authorized>
+        <NotAuthorized>
+            <a href="login">Log in</a>
+            <a href="register">Register</a>
+        </NotAuthorized>
+    </AuthorizeView>
+</CascadingAuthenticationState>
+@code{
+    [Inject] UserAuthenticationStateProvider AuthStateProvider { get; set; }
+
+    public void BeginLogOut()
+    {
+        AuthStateProvider.MarkUserAsLoggedOut();
+        Navigation.NavigateToLogout("/");
+    }
+}

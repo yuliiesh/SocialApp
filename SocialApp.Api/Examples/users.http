@@ -1,0 +1,4 @@
+﻿### GET request to example server
+GET localhost:5212/api/Users?username=sharko197807@gmail.com
+
+###

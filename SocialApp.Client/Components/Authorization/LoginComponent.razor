@@ -1,0 +1,28 @@
+﻿<div class="login-container" id="login">
+    <div class="top">
+        <span>Don't have an account? <button href="" onclick="@ChangeToRegistration">Sign Up</button></span>
+        <header>Login</header>
+    </div>
+    <div class="input-box">
+        <input type="text" class="input-field" id="login-username" placeholder="Username or Email" @bind="_loginRequest.Email">
+        <i class="bx bx-user"></i>
+    </div>
+    <div class="input-box">
+        <input type="password" class="input-field" id="login-password" placeholder="Password" @bind="_loginRequest.Password">
+        <i class="bx bx-lock-alt"></i>
+    </div>
+    <div class="input-box">
+        <button type="button" class="submit" id="signInBtn" @onclick="async () => await OnLogin(_loginRequest)">Sign In</button>
+    </div>
+    <div class="two-col">
+        <div class="one">
+            <input type="checkbox" id="login-check">
+            <label for="login-check"> Remember Me</label>
+        </div>
+        <div class="two">
+            <label>
+                <a href="#">Forgot password?</a>
+            </label>
+        </div>
+    </div>
+</div>

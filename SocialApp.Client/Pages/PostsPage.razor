@@ -1,0 +1,21 @@
+﻿@page "/posts"
+@inherits SocialApp.Client.Components.Base.LoadingComponent
+
+@using Microsoft.AspNetCore.Authorization
+@using SocialApp.Client.Components.Post
+@attribute [Authorize]
+
+<div class="main-content">
+    <CreatePost/>
+    @if (Loading)
+    {
+        <div>Loading...</div>
+    }
+    else
+    {
+        @foreach (var post in _posts)
+        {
+            <PostOverview Post="post"/>
+        }
+    }
+</div>
