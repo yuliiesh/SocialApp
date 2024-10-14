@@ -9,7 +9,7 @@ public partial class ProfilePage : LoadingComponent
 {
     private bool _loading;
 
-    private IReadOnlyCollection<PostDto> _posts;
+    private IList<PostDto> _posts;
 
     [Inject]
     private IPostService PostService { get; set; }

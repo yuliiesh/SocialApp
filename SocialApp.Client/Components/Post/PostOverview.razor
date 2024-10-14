@@ -1,10 +1,11 @@
-﻿<div class="post-container">
+﻿@using SocialApp.Client.Components.Comment
+<div class="post-container">
     <div class="post-row">
         <div class="user-profile">
             <img src="images/photo.jpg" alt="userPhoto" class="sidebar__image">
             <div>
                 <p>Pcholin</p>
-                <span>October 14 2024, 9:46</span>
+                <span>@Post.CreatedAt</span>
             </div>
         </div>
         <a href="#">
@@ -17,34 +18,18 @@
     <div class="post-row">
         <div class="activity-icons">
             <button><img src="images/like-regular-24.png"> 120</button>
-            <button onclick="@ToggleShowCommnets" class="comments-icon"><img src="images/comment-regular-24.png"> 10</button>
+            <button @onclick="async () => await ToggleShowComments()" class="comments-icon"><img src="images/comment-regular-24.png"> 10</button>
             <button><img src="images/share-regular-24.png"> 20</button>
         </div>
     </div>
 
-    @if (_showCommnets)
+    @if (_showCommnets && _comments is not null && _comments.Any())
     {
         <div class="comments-section">
-            <div class="comment">
-                <div class="user-profile">
-                    <img src="images/photo.jpg" alt="commenterPhoto" class="commenter-photo">
-                    <div>
-                        <p>Commenter1</p>
-                        <span>October 14 2024, 10:00</span>
-                    </div>
-                </div>
-                <div class="comment-text">This is a sample comment text.</div>
-            </div>
-            <div class="comment">
-                <div class="user-profile">
-                    <img src="images/photo.jpg" alt="commenterPhoto" class="commenter-photo">
-                    <div>
-                        <p>Commenter2</p>
-                        <span>October 14 2024, 10:05</span>
-                    </div>
-                </div>
-                <div class="comment-text">Another sample comment text.</div>
-            </div>
+            @foreach (var comment in _comments)
+            {
+                <CommentComponent Comment="comment"/>
+            }
         </div>
     }
 </div>

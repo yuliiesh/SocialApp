@@ -1,9 +1,7 @@
-﻿using System.Runtime.Serialization.Json;
+﻿using System.Net.Http.Json;
 using System.Security.Claims;
-using System.Text.Json;
-using System.Xml.Schema;
 using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.VisualBasic;
+using Microsoft.AspNetCore.Identity;
 using SocialApp.Client.Services;
 
 namespace SocialApp.Client.Authorization;
@@ -11,10 +9,12 @@ namespace SocialApp.Client.Authorization;
 public class UserAuthenticationStateProvider : AuthenticationStateProvider
 {
     private readonly ILocalStorageService _localStorage;
+    private readonly HttpClient _httpClient;
 
-    public UserAuthenticationStateProvider(ILocalStorageService localStorage)
+    public UserAuthenticationStateProvider(ILocalStorageService localStorage, HttpClient httpClient)
     {
         _localStorage = localStorage;
+        _httpClient = httpClient;
     }
 
     public override async Task<AuthenticationState> GetAuthenticationStateAsync()
@@ -26,6 +26,8 @@ public class UserAuthenticationStateProvider : AuthenticationStateProvider
         if (email != string.Empty)
         {
             identity = new([new(ClaimTypes.Email, email)], "apiauth");
+            var storedUser = await _httpClient.GetFromJsonAsync<IdentityUser>("/api/Users/?username=" + email);
+            identity.AddClaim(new Claim(ClaimTypes.Sid, storedUser.Id));
         }
 
         var user = new ClaimsPrincipal(identity);

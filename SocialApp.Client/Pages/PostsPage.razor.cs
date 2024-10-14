@@ -9,7 +9,7 @@ public partial class PostsPage : LoadingComponent
 {
     private bool _loading;
 
-    private IReadOnlyCollection<PostDto> _posts;
+    private IList<PostDto> _posts;
 
     [Inject]
     private IPostService PostService { get; set; }
@@ -22,5 +22,11 @@ public partial class PostsPage : LoadingComponent
         });
 
         await base.OnInitializedAsync();
+    }
+
+    private void PostCreated(PostDto post)
+    {
+        _posts.Insert(0, post);
+        StateHasChanged();
     }
 }

@@ -10,7 +10,7 @@
     <SidebarComponent />
 
     <div class="posts">
-        <CreatePost/>
+        <CreatePost OnPostCreated="PostCreated"/>
         @if (Loading)
         {
             <div>Loading...</div>

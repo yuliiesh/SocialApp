@@ -2,5 +2,5 @@
 
 public class GetPostsResponse
 {
-    public IReadOnlyCollection<PostDto> Posts { get; set; }
+    public IList<PostDto> Posts { get; set; }
 }
