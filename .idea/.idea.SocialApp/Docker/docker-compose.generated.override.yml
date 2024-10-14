@@ -2,7 +2,7 @@
 services:
   socialapp.api:
     build:
-      context: "C:\\Users\\Taras Sharko\\Desktop\\SocialApp\\SocialApp"
+      context: "C:\\Users\\Taras Sharko\\Desktop\\SocialApp"
       dockerfile: "SocialApp.Api/Dockerfile"
       target: "base"
     command: []
@@ -16,6 +16,6 @@ services:
     ports: []
     volumes:
     - "C:\\Users\\Taras Sharko\\.nuget\\packages:/home/app/.nuget/packages"
-    - "C:\\Users\\Taras Sharko\\Desktop\\SocialApp\\SocialApp\\SocialApp.Api:/app:rw"
-    - "C:\\Users\\Taras Sharko\\Desktop\\SocialApp\\SocialApp:/src:rw"
+    - "C:\\Users\\Taras Sharko\\Desktop\\SocialApp\\SocialApp.Api:/app:rw"
+    - "C:\\Users\\Taras Sharko\\Desktop\\SocialApp:/src:rw"
     working_dir: "/app"

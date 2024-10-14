@@ -9,3 +9,7 @@ Content-Type: application/json
 ###
 
 GET localhost:5212/api/Posts
+
+###
+
+GET localhost:5212/api/Posts/fake

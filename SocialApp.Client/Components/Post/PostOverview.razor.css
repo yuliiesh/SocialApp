@@ -75,6 +75,11 @@
     background: none;
     border: none;
 
+    &:hover {
+        background-color: #f0ebe6;
+        border-radius: 6px;
+    }
+
     img {
         width: 18px;
         margin-right: 10px;

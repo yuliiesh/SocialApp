@@ -19,7 +19,7 @@ public class UserAuthenticationStateProvider : AuthenticationStateProvider
 
     public override async Task<AuthenticationState> GetAuthenticationStateAsync()
     {
-        var identity = new ClaimsIdentity("api");
+        var identity = new ClaimsIdentity();
 
         var email = await _localStorage.GetItem("email") ?? string.Empty;
 

@@ -48,7 +48,9 @@ public class RepositoryBase<T> : IRepositoryBase<T> where T : ModelBase
     // Get all records
     public async Task<IReadOnlyCollection<T>> GetAll(CancellationToken cancellationToken)
     {
-        return await _collection.Find(_ => true).ToListAsync(cancellationToken);
+        return await _collection.Find(_ => true)
+            .Sort(Builders<T>.Sort.Descending(a => a.CreatedAt))
+            .ToListAsync(cancellationToken);
     }
 
     // Delete
