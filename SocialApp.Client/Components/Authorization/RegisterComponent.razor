@@ -5,13 +5,17 @@
     </div>
     <div class="two-forms">
         <div class="input-box">
-            <input type="text" class="input-field" id="register-firstname" placeholder="Firstname">
+            <input type="text" class="input-field" id="register-firstname" placeholder="Firstname" @bind="_registerRequest.FirstName">
             <i class="bx bx-user"></i>
         </div>
         <div class="input-box">
-            <input type="text" class="input-field" id="register-lastname" placeholder="Lastname">
+            <input type="text" class="input-field" id="register-lastname" placeholder="Lastname" @bind="_registerRequest.LastName">
             <i class="bx bx-user"></i>
         </div>
+    </div>
+    <div class="input-box">
+        <input type="email" class="input-field" id="register-username" placeholder="Username" @bind="_registerRequest.Username">
+        <i class="bx bx-envelope"></i>
     </div>
     <div class="input-box">
         <input type="email" class="input-field" id="register-email" placeholder="Email" @bind="_registerRequest.Email">
@@ -26,7 +30,7 @@
         <i class="bx bx-lock-alt"></i>
     </div>
     <div class="input-box">
-        <button type="button" class="submit" id="registerBtnSubmit">Register</button>
+        <button type="button" class="submit" id="registerBtnSubmit" @onclick="async () => await OnRegister(_registerRequest)">Register</button>
     </div>
     <div class="two-col">
         <div class="one">

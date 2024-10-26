@@ -14,6 +14,7 @@ builder.Services.AddScoped(provider =>
 
     var uriString = configuration["ApiSettings:BaseUrl"];
     var httpClient = new HttpClient { BaseAddress = new(uriString!), };
+    httpClient.DefaultRequestHeaders.Add("Access-Control-Allow-Origin", "localhost");
     return httpClient;
 });
 

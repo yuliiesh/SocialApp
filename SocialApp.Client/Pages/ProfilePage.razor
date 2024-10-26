@@ -8,8 +8,8 @@
             <div class="pd-row">
                 <img src="images/photo.jpg" class="pd-image">
                 <div>
-                    <h3>Pcholin</h3>
-                    <p>120 Friends - 20 mutuals </p>
+                    <h3>@_profile.FirstName @_profile.LastName</h3>
+                    <p>@_profile.FriendsCount friends- 20 mutuals </p>
                     <img src="images/img-friend-1.png">
                     <img src="images/img-friend-2.png">
                     <img src="images/img-friend-3.png">
@@ -68,7 +68,7 @@
         </div>
 
         <div class="post-col">
-            <CreatePost/>
+            <CreatePost OnPostCreated="PostCreated" Profile="_profile"/>
             @if (Loading)
             {
                 <div>Loading...</div>

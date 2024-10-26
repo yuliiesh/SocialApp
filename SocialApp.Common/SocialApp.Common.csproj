@@ -5,4 +5,8 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\SocialApp.Data\SocialApp.Data.csproj" />
+    </ItemGroup>
+
 </Project>

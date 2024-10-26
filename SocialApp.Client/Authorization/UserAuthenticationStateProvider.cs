@@ -1,7 +1,9 @@
 ﻿using System.Net.Http.Json;
 using System.Security.Claims;
+using System.Text.Json;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
+using MongoDB.Bson.IO;
 using SocialApp.Client.Services;
 
 namespace SocialApp.Client.Authorization;
@@ -10,11 +12,16 @@ public class UserAuthenticationStateProvider : AuthenticationStateProvider
 {
     private readonly ILocalStorageService _localStorage;
     private readonly HttpClient _httpClient;
+    private readonly IProfileService _profileService;
 
-    public UserAuthenticationStateProvider(ILocalStorageService localStorage, HttpClient httpClient)
+    public UserAuthenticationStateProvider(
+        ILocalStorageService localStorage,
+        HttpClient httpClient,
+        IProfileService profileService)
     {
         _localStorage = localStorage;
         _httpClient = httpClient;
+        _profileService = profileService;
     }
 
     public override async Task<AuthenticationState> GetAuthenticationStateAsync()
@@ -27,6 +34,8 @@ public class UserAuthenticationStateProvider : AuthenticationStateProvider
         {
             identity = new([new(ClaimTypes.Email, email)], "apiauth");
             var storedUser = await _httpClient.GetFromJsonAsync<IdentityUser>("/api/Users/?username=" + email);
+            var profile = await _profileService.Get(email);
+            await _localStorage.SetItem("profile", JsonSerializer.Serialize(profile));
             identity.AddClaim(new Claim(ClaimTypes.Sid, storedUser.Id));
         }
 
@@ -37,12 +46,14 @@ public class UserAuthenticationStateProvider : AuthenticationStateProvider
         return state;
     }
 
-    public void MarkUserAsAuthenticated(string email)
+    public async Task MarkUserAsAuthenticated(string email)
     {
         var identity = new ClaimsIdentity([new Claim(ClaimTypes.Name, email)], "apiauth");
         var user = new ClaimsPrincipal(identity);
 
-        _localStorage.SetItem("email", email);
+        await _localStorage.SetItem("email", email);
+        var profile = await _profileService.Get(email);
+        await _localStorage.SetItem("profile", JsonSerializer.Serialize(profile));
 
         NotifyAuthenticationStateChanged(Task.FromResult(new AuthenticationState(user)));
     }

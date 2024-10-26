@@ -1,6 +1,6 @@
 ﻿using System.Net.Http.Json;
-using SocialApp.Api.Posts.Create;
 using SocialApp.Common.Posts;
+using SocialApp.Common.Posts.Create;
 using SocialApp.Common.Posts.Get;
 
 namespace SocialApp.Client.Services;

@@ -21,4 +21,11 @@ public class CommentsController : ControllerBase
         var comments = await _commentRepository.GetCommentsByPostId(postId, HttpContext.RequestAborted);
         return Ok(comments.Select(x => x.ToDto()));
     }
+
+    [HttpGet("count")]
+    public async Task<IActionResult> GetCommentsCount([FromQuery] Guid postId)
+    {
+        var count = await _commentRepository.GetCommentsCount(postId, HttpContext.RequestAborted);
+        return Ok(count);
+    }
 }

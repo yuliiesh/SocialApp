@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <IsAspireHost>true</IsAspireHost>
+        <UserSecretsId>7a75fd90-d4d7-4f49-8c4d-d53c7f4bd1e5</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Aspire.Hosting.AppHost" Version="8.2.1"/>
+        <PackageReference Include="Aspire.Hosting.MongoDB" Version="8.2.2" />
+        <PackageReference Include="Aspire.Hosting.MySql" Version="8.2.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SocialApp.Api\SocialApp.Api.csproj" />
+      <ProjectReference Include="..\SocialApp.Client\SocialApp.Client.csproj" />
+    </ItemGroup>
+
+</Project>

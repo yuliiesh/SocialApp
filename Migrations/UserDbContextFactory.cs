@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.Extensions.Configuration;
-using System.IO;
 
 namespace SocialApp.Data
 {
@@ -11,7 +9,7 @@ namespace SocialApp.Data
         {
             var optionsBuilder = new DbContextOptionsBuilder<UserDbContext>();
 
-            optionsBuilder.UseMySQL("Server=localhost;port=3306;database=users;user id=admin;password=admin");
+            optionsBuilder.UseMySQL("Server=localhost;Port=54226;User ID=root;Password=!1G!784mn0quKnermF!KXp;Database=users");
 
             return new UserDbContext(optionsBuilder.Options);
         }

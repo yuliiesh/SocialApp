@@ -2,13 +2,13 @@
     <div class="user-profile">
         <img src="images/photo.jpg" alt="userPhoto" class="sidebar__image">
         <div>
-            <p>Pcholin</p>
+            <p>@Profile.FirstName @Profile.LastName</p>
             <small>Public</small>
         </div>
     </div>
 
     <div class="post-input-container">
-        <textarea rows="3" placeholder="What's on your mind, Pcholin?" @bind="_createPostRequest.Content"></textarea>
+        <textarea rows="3" placeholder="What's on your mind, @Profile.FirstName @Profile.LastName?" @bind="_createPostRequest.Content"></textarea>
         <div class="button-container">
             <div class="add-post-links">
                 <a href="#"><img src="images/image-add-regular-24.png"> Photo</a>

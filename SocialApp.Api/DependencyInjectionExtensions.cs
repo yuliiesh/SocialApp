@@ -9,7 +9,7 @@ public static class DependencyInjectionExtensions
     {
         services.AddScoped<SocialDbContext>(provider =>
         {
-            var connectionString = provider.GetService<IConfiguration>().GetConnectionString("DefaultConnection");
+            var connectionString = provider.GetService<IConfiguration>().GetConnectionString("SocialApp");
             return new SocialDbContext(connectionString, "SocialApp");
         });
         return services;

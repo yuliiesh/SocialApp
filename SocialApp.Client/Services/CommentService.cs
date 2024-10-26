@@ -6,6 +6,7 @@ namespace SocialApp.Client.Services;
 public interface ICommentService
 {
     Task<IReadOnlyCollection<CommentDto>> GetComments(Guid postId, CancellationToken cancellationToken);
+    Task<int> GetCommentsCount(Guid postId, CancellationToken cancellationToken);
 }
 
 public class CommentService : ICommentService
@@ -21,5 +22,10 @@ public class CommentService : ICommentService
     {
         var response = await _httpClient.GetFromJsonAsync<IReadOnlyCollection<CommentDto>>($"/api/comments?postId={postId}", cancellationToken);
         return response;
+    }
+
+    public async Task<int> GetCommentsCount(Guid postId, CancellationToken cancellationToken)
+    {
+        return await _httpClient.GetFromJsonAsync<int>($"/api/comments/count?postId={postId}", cancellationToken);
     }
 }

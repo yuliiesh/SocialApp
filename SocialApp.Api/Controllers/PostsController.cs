@@ -1,8 +1,8 @@
 ﻿using Bogus;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using SocialApp.Api.Posts;
-using SocialApp.Api.Posts.Create;
+using SocialApp.Common.Posts;
+using SocialApp.Common.Posts.Create;
 using SocialApp.Common.Posts.Get;
 using SocialApp.Data.Models;
 using SocialApp.Data.Repositories;
@@ -13,37 +13,40 @@ namespace SocialApp.Api.Controllers;
 [Route("api/[controller]")]
 public class PostsController : ControllerBase
 {
-    private readonly IPostRepository _postRepository;
     private readonly UserManager<IdentityUser> _userManager;
+    private readonly IPostRepository _postRepository;
     private readonly ICommentRepository _commentRepository;
+    private readonly IPostHandler _postHandler;
 
     public PostsController(
         IPostRepository postRepository,
-        UserManager<IdentityUser> userManager, ICommentRepository commentRepository)
+        UserManager<IdentityUser> userManager,
+        ICommentRepository commentRepository,
+        IPostHandler postHandler)
     {
         _postRepository = postRepository;
         _userManager = userManager;
         _commentRepository = commentRepository;
+        _postHandler = postHandler;
     }
 
     [HttpGet]
     public async Task<IActionResult> GetPosts(CancellationToken cancellationToken)
     {
-        var posts = await _postRepository.GetAll(cancellationToken);
+        var posts = await _postHandler.GetPosts(cancellationToken);
 
         return Ok(new GetPostsResponse
         {
-            Posts = posts.Select(x => x.ToDto()).ToList()
+            Posts = posts
         });
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreatePost([FromBody] CreatePostRequest request,
-        CancellationToken cancellationToken)
+    public async Task<IActionResult> CreatePost([FromBody] CreatePostRequest request, CancellationToken cancellationToken)
     {
-        var createdPost = await _postRepository.Save(request.ToPostModel(), cancellationToken);
+        var response = await _postHandler.CreatePost(request, cancellationToken);
 
-        return Ok(createdPost.ToCreatePostResponse());
+        return Ok(response);
     }
 
     [HttpGet("fake")]

@@ -8,6 +8,8 @@ public class PostDto
     public DateTime? UpdatedAt { get; set; }
     public DateTime? DeletedAt { get; set; }
 
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
     public string Title { get; set; }
     public string Content { get; set; }
 }

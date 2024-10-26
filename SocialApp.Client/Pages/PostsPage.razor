@@ -2,25 +2,24 @@
 @inherits SocialApp.Client.Components.Base.LoadingComponent
 
 @using Microsoft.AspNetCore.Authorization
-@using SocialApp.Client.Components.Post
-@using SocialApp.Client.Components.Base
+
 @attribute [Authorize]
 
-<div class="main-content">
-    <SidebarComponent />
+@if (Loading)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <div class="main-content">
+        <SidebarComponent/>
 
-    <div class="posts">
-        <CreatePost OnPostCreated="PostCreated"/>
-        @if (Loading)
-        {
-            <div>Loading...</div>
-        }
-        else
-        {
+        <div class="posts">
+            <CreatePost OnPostCreated="PostCreated" Profile="_profile"/>
             @foreach (var post in _posts)
             {
                 <PostOverview Post="post"/>
             }
-        }
+        </div>
     </div>
-</div>
+}

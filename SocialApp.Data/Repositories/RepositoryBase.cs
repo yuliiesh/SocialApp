@@ -40,7 +40,7 @@ public class RepositoryBase<T> : IRepositoryBase<T> where T : ModelBase
     }
 
     // Read by Id
-    public async Task<T> GetById(Guid id, CancellationToken cancellationToken)
+    public virtual async Task<T> GetById(Guid id, CancellationToken cancellationToken)
     {
         return await _collection.Find(e => e.Id == id).FirstOrDefaultAsync(cancellationToken);
     }

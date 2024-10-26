@@ -15,6 +15,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialApp.Common", "SocialA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Migrations", "Migrations\Migrations.csproj", "{D9CF0E28-A7F5-42AE-993F-545EC247147F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "aspire", "aspire", "{A27361FB-C564-4808-BA39-8A841F69D4B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialApp.ServiceDefalts", "SocialApp.ServiceDefalts\SocialApp.ServiceDefalts.csproj", "{D179110F-0F65-4E86-9EB8-0BF9771CA555}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialApp.Host", "SocialApp.Host\SocialApp.Host.csproj", "{D10E2091-EC27-4D2E-8425-6EEF50F01D40}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,5 +47,17 @@ Global
 		{D9CF0E28-A7F5-42AE-993F-545EC247147F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9CF0E28-A7F5-42AE-993F-545EC247147F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9CF0E28-A7F5-42AE-993F-545EC247147F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D179110F-0F65-4E86-9EB8-0BF9771CA555}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D179110F-0F65-4E86-9EB8-0BF9771CA555}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D179110F-0F65-4E86-9EB8-0BF9771CA555}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D179110F-0F65-4E86-9EB8-0BF9771CA555}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D10E2091-EC27-4D2E-8425-6EEF50F01D40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D10E2091-EC27-4D2E-8425-6EEF50F01D40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D10E2091-EC27-4D2E-8425-6EEF50F01D40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D10E2091-EC27-4D2E-8425-6EEF50F01D40}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D179110F-0F65-4E86-9EB8-0BF9771CA555} = {A27361FB-C564-4808-BA39-8A841F69D4B5}
+		{D10E2091-EC27-4D2E-8425-6EEF50F01D40} = {A27361FB-C564-4808-BA39-8A841F69D4B5}
 	EndGlobalSection
 EndGlobal

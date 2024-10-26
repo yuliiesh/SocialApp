@@ -1,4 +1,4 @@
-﻿namespace SocialApp.Api.Posts.Create;
+﻿namespace SocialApp.Common.Posts.Create;
 
 public class CreatePostRequest
 {
