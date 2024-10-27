@@ -33,10 +33,13 @@ public class UserAuthenticationStateProvider : AuthenticationStateProvider
         if (email != string.Empty)
         {
             identity = new([new(ClaimTypes.Email, email)], "apiauth");
-            var storedUser = await _httpClient.GetFromJsonAsync<IdentityUser>("/api/Users/?username=" + email);
+
             var profile = await _profileService.Get(email);
+
             await _localStorage.SetItem("profile", JsonSerializer.Serialize(profile));
-            identity.AddClaim(new Claim(ClaimTypes.Sid, storedUser.Id));
+            await _localStorage.SetItem("userId", profile.UserId.ToString());
+
+            identity.AddClaim(new Claim(ClaimTypes.Sid, profile.UserId.ToString()));
         }
 
         var user = new ClaimsPrincipal(identity);
@@ -52,8 +55,10 @@ public class UserAuthenticationStateProvider : AuthenticationStateProvider
         var user = new ClaimsPrincipal(identity);
 
         await _localStorage.SetItem("email", email);
+
         var profile = await _profileService.Get(email);
         await _localStorage.SetItem("profile", JsonSerializer.Serialize(profile));
+        await _localStorage.SetItem("userId", profile.UserId.ToString());
 
         NotifyAuthenticationStateChanged(Task.FromResult(new AuthenticationState(user)));
     }
@@ -62,6 +67,8 @@ public class UserAuthenticationStateProvider : AuthenticationStateProvider
     {
         var anonymousUser = new ClaimsPrincipal(new ClaimsIdentity());
         _localStorage.RemoveItem("email");
+        _localStorage.RemoveItem("profile");
+        _localStorage.RemoveItem("userId");
 
         NotifyAuthenticationStateChanged(Task.FromResult(new AuthenticationState(anonymousUser)));
     }

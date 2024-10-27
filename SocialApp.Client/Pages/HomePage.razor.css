@@ -1,0 +1,13 @@
+﻿.main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+    width: 100%;
+}
+
+.posts {
+
+    flex-basis: 66%;
+    max-width: 600px;
+}

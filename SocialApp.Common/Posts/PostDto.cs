@@ -1,4 +1,6 @@
-﻿namespace SocialApp.Common.Posts;
+﻿using SocialApp.Common.Base;
+
+namespace SocialApp.Common.Posts;
 
 public class PostDto
 {
@@ -8,8 +10,10 @@ public class PostDto
     public DateTime? UpdatedAt { get; set; }
     public DateTime? DeletedAt { get; set; }
 
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
+    public ProfileInfo ProfileInfo { get; set; }
+
     public string Title { get; set; }
     public string Content { get; set; }
+
+    public HashSet<Guid> UserLikes { get; set; }
 }

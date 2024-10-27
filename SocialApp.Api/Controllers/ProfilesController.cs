@@ -15,9 +15,17 @@ public class ProfilesController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetProfile([FromQuery] string email)
+    public async Task<IActionResult> GetProfile([FromQuery] string email, [FromQuery] string username)
     {
-        var profileDto = await _profileHandler.Get(email, HttpContext.RequestAborted);
+        ProfileDto profileDto;
+        if (!string.IsNullOrEmpty(username))
+        {
+            profileDto = await _profileHandler.GetByUsername(username, HttpContext.RequestAborted);
+        }
+        else
+        {
+            profileDto = await _profileHandler.Get(email, HttpContext.RequestAborted);
+        }
 
         return Ok(profileDto);
     }

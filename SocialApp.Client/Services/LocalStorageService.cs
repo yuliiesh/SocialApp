@@ -6,6 +6,7 @@ namespace SocialApp.Client.Services;
 public interface ILocalStorageService
 {
     Task SetItem(string key, string value);
+    Task SetItem<T>(string key, T value);
     Task<string> GetItem(string key);
     Task<T> GetItem<T>(string key);
     Task RemoveItem(string key);
@@ -23,6 +24,9 @@ public class LocalStorageService : ILocalStorageService
 
     public async Task SetItem(string key, string value) =>
         await _jsRuntime.InvokeVoidAsync("localStorage.setItem", key, value);
+
+    public async Task SetItem<T>(string key, T value) =>
+        await SetItem(key, JsonSerializer.Serialize(value));
 
     public async Task<string> GetItem(string key) =>
         await _jsRuntime.InvokeAsync<string>("localStorage.getItem", key);

@@ -31,9 +31,20 @@ public class PostsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetPosts(CancellationToken cancellationToken)
+    public async Task<IActionResult> GetPosts()
     {
-        var posts = await _postHandler.GetPosts(cancellationToken);
+        var posts = await _postHandler.GetPosts(HttpContext.RequestAborted);
+
+        return Ok(new GetPostsResponse
+        {
+            Posts = posts
+        });
+    }
+
+    [HttpGet("{userId:guid}")]
+    public async Task<IActionResult> GetPosts([FromRoute] Guid userId)
+    {
+        var posts = await _postHandler.GetPosts(userId, HttpContext.RequestAborted);
 
         return Ok(new GetPostsResponse
         {
@@ -42,11 +53,18 @@ public class PostsController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreatePost([FromBody] CreatePostRequest request, CancellationToken cancellationToken)
+    public async Task<IActionResult> CreatePost([FromBody] CreatePostRequest request)
     {
-        var response = await _postHandler.CreatePost(request, cancellationToken);
+        var response = await _postHandler.CreatePost(request, HttpContext.RequestAborted);
 
         return Ok(response);
+    }
+
+    [HttpDelete("{postId:guid}")]
+    public async Task<IActionResult> DeletePost([FromRoute] Guid postId)
+    {
+        await _postHandler.DeletePost(postId, HttpContext.RequestAborted);
+        return NoContent();
     }
 
     [HttpGet("fake")]

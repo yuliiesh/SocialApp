@@ -13,8 +13,11 @@ public static class PostsMapper
             Title = model.Title,
             Content = model.Content,
             CreatedAt = model.CreatedAt,
-            FirstName = profile?.FirstName,
-            LastName = profile?.LastName,
+            ProfileInfo = new()
+            {
+                FirstName = profile?.FirstName,
+                LastName = profile?.LastName,
+            }
         };
 
     public static PostModel ToPostModel(this CreatePostRequest request) =>
@@ -27,7 +30,7 @@ public static class PostsMapper
             UserId = request.UserId,
         };
 
-    public static PostDto ToDto(this PostModel model, ProfileModel profile) =>
+    public static PostDto ToDto(this PostModel model, ProfileModel profile, HashSet<Guid> userLikes) =>
         new()
         {
             Id = model.Id,
@@ -37,7 +40,11 @@ public static class PostsMapper
             CreatedAt = model.CreatedAt,
             DeletedAt = model.DeletedAt,
             UpdatedAt = model.UpdatedAt,
-            FirstName = profile?.FirstName,
-            LastName = profile?.LastName,
+            UserLikes = userLikes,
+            ProfileInfo = new()
+            {
+                FirstName = profile?.FirstName,
+                LastName = profile?.LastName,
+            }
         };
 }

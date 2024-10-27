@@ -75,6 +75,10 @@
     background: none;
     border: none;
 
+    &.liked {
+        color: #ba4394;
+    }
+
     &:hover {
         background-color: #f0ebe6;
         border-radius: 6px;
@@ -86,6 +90,40 @@
     }
 }
 
-.comments-section {
-    margin-top: 15px;
+.menu-container {
+    position: relative;
+}
+
+.menu-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    min-width: 100px;
+    z-index: 10;
+}
+
+.menu-item {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    color: #626262;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 14px;
+
+    &:hover {
+        background-color: #f0ebe6;
+    }
 }

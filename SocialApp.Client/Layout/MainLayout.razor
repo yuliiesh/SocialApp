@@ -18,7 +18,7 @@
         </div>
     </nav>
 
-    <main style="overflow: hidden">
+    <main style="overflow: hidden; width: 1000px;">
         @Body
     </main>
 </div>
@@ -26,5 +26,5 @@
 @code{
     private void ToProfile() => Navigation.NavigateTo("profile");
 
-    private void ToPosts() => Navigation.NavigateTo("posts");
+    private void ToPosts() => Navigation.NavigateTo("home");
 }

@@ -1,4 +1,6 @@
-﻿namespace SocialApp.Common.Posts.Create;
+﻿using SocialApp.Common.Base;
+
+namespace SocialApp.Common.Posts.Create;
 
 public class CreatePostResponse
 {
@@ -7,6 +9,5 @@ public class CreatePostResponse
     public string Title { get; set; }
     public string Content { get; set; }
     public DateTime CreatedAt { get; set; }
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
+    public ProfileInfo ProfileInfo { get; set; }
 }

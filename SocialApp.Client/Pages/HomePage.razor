@@ -1,0 +1,33 @@
+﻿@page "/home"
+@inherits LoadingComponent
+@using Microsoft.AspNetCore.Authorization
+@using SocialApp.Client.Components.Friends
+
+@attribute [Authorize]
+
+@if (Loading)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <div class="main-content">
+        <SidebarComponent Tab="_tab" OnTabChanged="TabChanged"/>
+
+        @if (_tab == Tab.Posts)
+        {
+            <div class="posts">
+                <CreatePost OnPostCreated="PostCreated" Profile="_profile"/>
+                @foreach (var post in _posts)
+                {
+                    <PostOverview Post="post" OnPostDeleted="PostDeleted"/>
+                }
+            </div>
+        }
+
+        @if (_tab == Tab.Friends)
+        {
+            <FriendsComponent/>
+        }
+    </div>
+}

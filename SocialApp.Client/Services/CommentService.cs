@@ -5,8 +5,9 @@ namespace SocialApp.Client.Services;
 
 public interface ICommentService
 {
-    Task<IReadOnlyCollection<CommentDto>> GetComments(Guid postId, CancellationToken cancellationToken);
-    Task<int> GetCommentsCount(Guid postId, CancellationToken cancellationToken);
+    Task<ICollection<CommentDto>> GetComments(Guid postId);
+    Task<int> GetCommentsCount(Guid postId);
+    Task AddComment(CommentDto comment);
 }
 
 public class CommentService : ICommentService
@@ -18,14 +19,12 @@ public class CommentService : ICommentService
         _httpClient = httpClient;
     }
 
-    public async Task<IReadOnlyCollection<CommentDto>> GetComments(Guid postId, CancellationToken cancellationToken)
-    {
-        var response = await _httpClient.GetFromJsonAsync<IReadOnlyCollection<CommentDto>>($"/api/comments?postId={postId}", cancellationToken);
-        return response;
-    }
+    public async Task<ICollection<CommentDto>> GetComments(Guid postId) =>
+        await _httpClient.GetFromJsonAsync<ICollection<CommentDto>>($"/api/comments?postId={postId}");
 
-    public async Task<int> GetCommentsCount(Guid postId, CancellationToken cancellationToken)
-    {
-        return await _httpClient.GetFromJsonAsync<int>($"/api/comments/count?postId={postId}", cancellationToken);
-    }
+    public async Task<int> GetCommentsCount(Guid postId) =>
+        await _httpClient.GetFromJsonAsync<int>($"/api/comments/count?postId={postId}");
+
+    public async Task AddComment(CommentDto comment) =>
+        await _httpClient.PostAsJsonAsync($"/api/comments/post/{comment.PostId}", comment);
 }

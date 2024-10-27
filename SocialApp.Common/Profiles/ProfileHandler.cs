@@ -7,6 +7,7 @@ namespace SocialApp.Common.Profiles;
 public interface IProfileHandler
 {
     Task<ProfileDto> Get(string email, CancellationToken cancellationToken);
+    Task<ProfileDto> GetByUsername(string username, CancellationToken cancellationToken);
     Task CreateProfile(CreateProfileRequest request, CancellationToken cancellationToken);
 }
 
@@ -21,6 +22,9 @@ public class ProfileHandler : IProfileHandler
 
     public async Task<ProfileDto> Get(string email, CancellationToken cancellationToken) =>
         (await _profileRepository.Get(email, cancellationToken)).ToDto();
+
+    public async Task<ProfileDto> GetByUsername(string email, CancellationToken cancellationToken) =>
+        (await _profileRepository.GetByUsername(email, cancellationToken)).ToDto();
 
     public async Task CreateProfile(CreateProfileRequest request, CancellationToken cancellationToken)
     {

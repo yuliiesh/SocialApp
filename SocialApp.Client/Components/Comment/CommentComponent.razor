@@ -2,9 +2,11 @@
     <div class="user-profile">
         <img src="images/photo.jpg" alt="commenterPhoto" class="commenter-photo">
         <div>
-            <p>Commenter1</p>
+            <a href="/profile/@Comment.ProfileInfo.Username" class="commenter-name">
+                <p>@Comment.ProfileInfo.FirstName @Comment.ProfileInfo.LastName</p>
+            </a>
             <span>@Comment.CreatedAt</span>
         </div>
     </div>
-    <div class="comment-text">@Comment.Content</div>
+    <div class="comment-text">@((MarkupString)Comment.Content.ReplaceLineEndings("<br>"))</div>
 </div>

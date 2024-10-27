@@ -12,6 +12,8 @@ public interface IRepositoryBase<T> where T : ModelBase
     Task<IReadOnlyCollection<T>> GetAll(CancellationToken cancellationToken);
 
     Task Delete(Guid id, CancellationToken cancellationToken);
+
+    Task Update(T entity, CancellationToken cancellationToken);
 }
 
 public class RepositoryBase<T> : IRepositoryBase<T> where T : ModelBase
@@ -23,7 +25,6 @@ public class RepositoryBase<T> : IRepositoryBase<T> where T : ModelBase
         _collection = dbContext.GetCollection<T>(collectionName);
     }
 
-    // Create or Update
     public async Task<T> Save(T entity, CancellationToken cancellationToken)
     {
         if (entity.Id == Guid.Empty)
@@ -39,13 +40,11 @@ public class RepositoryBase<T> : IRepositoryBase<T> where T : ModelBase
         return entity;
     }
 
-    // Read by Id
     public virtual async Task<T> GetById(Guid id, CancellationToken cancellationToken)
     {
         return await _collection.Find(e => e.Id == id).FirstOrDefaultAsync(cancellationToken);
     }
 
-    // Get all records
     public async Task<IReadOnlyCollection<T>> GetAll(CancellationToken cancellationToken)
     {
         return await _collection.Find(_ => true)
@@ -53,7 +52,12 @@ public class RepositoryBase<T> : IRepositoryBase<T> where T : ModelBase
             .ToListAsync(cancellationToken);
     }
 
-    // Delete
+    public async Task Update(T entity, CancellationToken cancellationToken)
+    {
+        var filter = Builders<T>.Filter.Eq(e => e.Id, entity.Id);
+        await _collection.ReplaceOneAsync(filter, entity, new ReplaceOptions { IsUpsert = true }, cancellationToken);
+    }
+
     public async Task Delete(Guid id, CancellationToken cancellationToken)
     {
         await _collection.DeleteOneAsync(e => e.Id == id, cancellationToken);

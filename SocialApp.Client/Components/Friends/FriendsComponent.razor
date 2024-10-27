@@ -1,0 +1,25 @@
+﻿@page "/friends"
+@inherits LoadingComponent
+
+<div class="friends">
+    <div class="friends-info">
+        <h2>My friends</h2>
+        <div class="friends-filters">
+            <input type="text" placeholder="Search friends..." class="search-input"/>
+        </div>
+    </div>
+
+    <div class="friends-list">
+        @foreach (var friend in _friends)
+        {
+            <div class="friend-card">
+                @* <img src="@friend.PhotoUrl" alt="Friend photo" class="friend-photo" /> *@
+                <div class="friend-info">
+                    <h3>@friend.Profile.FirstName @friend.Profile.LastName</h3>
+                    <p>0 mutual friends</p>
+                    <a href="/profile/@friend.Profile.Username" class="view-profile-btn">View profile</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

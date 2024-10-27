@@ -14,7 +14,7 @@
         .menu-item {
             display: flex;
             align-items: center;
-            justify-content: stretch    ;
+            justify-content: stretch;
             height: 4rem;
             cursor: pointer;
             position: relative;
@@ -30,11 +30,13 @@
                 text-align: center;
                 margin-left: 20px;
             }
+
             img {
                 width: 30px;
                 margin-right: 10px;
 
             }
+
             h3 {
                 color: #626262;
                 font-size: 20px;
@@ -53,6 +55,7 @@
                 overflow: hidden;
             }
         }
+
         .active {
             &::before {
                 content: "";
@@ -64,7 +67,7 @@
 
             }
 
-            img, h3{
+            img, h3 {
                 color: #5a7bd8;
             }
         }
@@ -119,11 +122,8 @@
     border-radius: 6px;
     cursor: pointer;
     transition: .3s ease;
-}
-.white-btn {
-    background: #5a7bd8;
-}
 
-.white-btn:hover {
-    background: #8758ff;
+    &:hover {
+        background: #8758ff;
+    }
 }

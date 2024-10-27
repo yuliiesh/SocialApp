@@ -8,6 +8,7 @@ namespace SocialApp.Data.Repositories;
 public interface IProfileRepository : IRepositoryBase<ProfileModel>
 {
     Task<ProfileModel> Get(string email, CancellationToken cancellationToken);
+    Task<ProfileModel> GetByUsername(string username, CancellationToken cancellationToken);
     Task<ImmutableDictionary<Guid, ProfileModel>> GetProfiles(ImmutableHashSet<Guid> userIds, CancellationToken cancellationToken);
 }
 
@@ -25,6 +26,12 @@ public sealed class ProfileRepository : RepositoryBase<ProfileModel>, IProfileRe
     public async Task<ProfileModel> Get(string email, CancellationToken cancellationToken)
     {
         var filter = Builders<ProfileModel>.Filter.Eq(p => p.Email, email);
+        return await _collection.Find(filter).SingleOrDefaultAsync(cancellationToken);
+    }
+
+    public async Task<ProfileModel> GetByUsername(string username, CancellationToken cancellationToken)
+    {
+        var filter = Builders<ProfileModel>.Filter.Eq(p => p.Username, username);
         return await _collection.Find(filter).SingleOrDefaultAsync(cancellationToken);
     }
 

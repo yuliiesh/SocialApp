@@ -29,7 +29,7 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddUserDatabase(builder.Configuration)
-    .AddUserAuthorization();
+    .AddUserAuthorization(builder.Configuration);
 
 var app = builder.Build();
 

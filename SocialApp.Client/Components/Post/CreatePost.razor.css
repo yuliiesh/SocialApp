@@ -84,7 +84,7 @@
 }
 
 .public-post-btn {
-margin-left: auto;
+    margin-left: auto;
 }
 
 .public-post-btn .white-btn {
@@ -97,11 +97,8 @@ margin-left: auto;
     border-radius: 30px;
     cursor: pointer;
     transition: .3s ease;
-}
-.white-btn {
-    background: #7c98ed;
-}
 
-.white-btn:hover {
-    background: #8758ff;
+    &:hover {
+        background: #8758ff;
+    }
 }

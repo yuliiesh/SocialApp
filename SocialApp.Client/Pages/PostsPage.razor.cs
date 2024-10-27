@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using SocialApp.Client.Components.Base;
+using SocialApp.Client.Extensions;
 using SocialApp.Client.Services;
 using SocialApp.Common.Posts;
 using SocialApp.Common.Profiles;
@@ -19,7 +20,7 @@ public partial class PostsPage : LoadingComponent
         await HandleLoadAction(async () =>
         {
             _posts = await PostService.GetAllPosts(CancellationToken.None);
-            _profile = await LocalStorage.GetItem<ProfileDto>("profile");
+            _profile = await LocalStorage.GetProfile();
         });
     }
 

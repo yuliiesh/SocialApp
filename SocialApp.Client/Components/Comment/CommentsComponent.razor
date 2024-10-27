@@ -1,0 +1,14 @@
+﻿<div class="comments-section">
+    @if (Comments is not null && Comments.Any())
+    {
+        @foreach (var comment in Comments)
+        {
+            <CommentComponent Comment="comment"/>
+        }
+    }
+
+    <div class="add-comment">
+        <textarea @bind="_newComment" placeholder="Write a comment..."></textarea>
+        <button @onclick="SubmitComment" class="submit-comment-btn">Send</button>
+    </div>
+</div>

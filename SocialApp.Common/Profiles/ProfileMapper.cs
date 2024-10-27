@@ -11,5 +11,8 @@ public static class ProfileMapper
             FirstName = model.FirstName,
             LastName = model.LastName,
             Username = model.Username,
+            UserId = model.UserId,
+            FriendsCount = model.Friends.Count,
+            Friends = model.Friends,
         };
 }

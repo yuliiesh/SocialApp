@@ -32,7 +32,6 @@
 
     .search {
         flex-basis: 26%;
-
     }
 
     .nav-button {
@@ -47,6 +46,7 @@
     border-radius: 55px;
     border: none;
     width: 350px;
+    text-align: center;
 
     &::placeholder {
         text-align: center;
