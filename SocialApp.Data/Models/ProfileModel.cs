@@ -6,6 +6,7 @@ public class ProfileModel : ModelBase
     public string LastName { get; set; }
     public string Email { get; set; }
     public string Username { get; set; }
+    public string ProfilePicture { get; set; }
 
     public ICollection<Guid> Friends { get; set; }
 }

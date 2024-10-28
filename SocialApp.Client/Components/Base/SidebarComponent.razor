@@ -10,7 +10,7 @@ else
     <div class="left">
         <a class="profile" href="/profile">
             <div class="profile-photo">
-                <img src="images/photo.jpg">
+                <img src="images/photo.jpg" alt="">
             </div>
             <div class="handle">
                 <h4>@_profile.FirstName @_profile.LastName</h4>
@@ -20,41 +20,41 @@ else
         <div class="sidebar">
             <a class="menu-item @(Tab == HomePage.Tab.Posts ? "active" : string.Empty)" @onclick="() => ChangeTab(HomePage.Tab.Posts)">
                 <span>
-                    <img src="images/home-alt-2-regular-24.png">
+                    <img src="images/home-alt-2-regular-24.png" alt="">
                 </span>
                 <h3>Posts</h3>
             </a>
 
             <a class="menu-item">
                 <span>
-                    <img src="images/bell-regular-24.png">
+                    <img src="images/bell-regular-24.png" alt="">
                 </span>
                 <h3>Notification</h3>
             </a>
 
             <a class="menu-item @(Tab == HomePage.Tab.Friends ? "active" : string.Empty)" @onclick="() => ChangeTab(HomePage.Tab.Friends)">
                 <span>
-                    <img src="images/user-regular-24.png">
+                    <img src="images/user-regular-24.png" alt="">
                 </span>
                 <h3>Friends</h3>
             </a>
 
             <a class="menu-item">
                 <span>
-                    <img src="images/envelope-regular-24.png">
+                    <img src="images/envelope-regular-24.png" alt="">
                 </span>
                 <h3>Message</h3>
             </a>
 
             <a class="menu-item">
                 <span>
-                    <img src="images/cog-regular-24.png">
+                    <img src="images/cog-regular-24.png" alt="">
                 </span>
                 <h3>Settings</h3>
             </a>
         </div>
         <div class="public-post-btn">
-            <button class="btn white-btn" id="publicBtn" onclick="@Logout">Logout</button>
+            <button class="btn white-btn" id="publicBtn" @onclick="Logout">Logout</button>
         </div>
     </div>
 }

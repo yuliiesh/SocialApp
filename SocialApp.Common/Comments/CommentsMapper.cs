@@ -16,6 +16,7 @@ public static class CommentsMapper
                 LastName = profile.LastName,
                 UserId = profile.UserId,
                 Username = profile.Username,
+                ProfilePicture = profile.ProfilePicture
             }
         };
 }

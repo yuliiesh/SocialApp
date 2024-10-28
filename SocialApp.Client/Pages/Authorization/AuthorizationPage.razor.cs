@@ -18,7 +18,7 @@ public partial class AuthorizationPage : ComponentBase
         var response = await Client.PostAsJsonAsync("api/auth/login", loginRequest);
         if (response.IsSuccessStatusCode)
         {
-            AuthenticationStateProvider.MarkUserAsAuthenticated(loginRequest.Email);
+            await AuthenticationStateProvider.MarkUserAsAuthenticated(loginRequest.Email);
             Navigation.NavigateTo("posts");
         }
     }

@@ -8,5 +8,6 @@ public class ProfileDto
     public string Username { get; set; }
     public int FriendsCount { get; set; }
     public Guid UserId { get; set; }
+    public required string ProfilePicture { get; set; }
     public required ICollection<Guid> Friends { get; set; }
 }

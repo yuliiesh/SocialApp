@@ -9,6 +9,7 @@ public interface IProfileHandler
     Task<ProfileDto> Get(string email, CancellationToken cancellationToken);
     Task<ProfileDto> GetByUsername(string username, CancellationToken cancellationToken);
     Task CreateProfile(CreateProfileRequest request, CancellationToken cancellationToken);
+    Task Update(ProfileDto profile, CancellationToken cancellationToken);
 }
 
 public class ProfileHandler : IProfileHandler
@@ -41,5 +42,17 @@ public class ProfileHandler : IProfileHandler
         };
 
         await _profileRepository.Save(model, cancellationToken);
+    }
+
+    public async Task Update(ProfileDto profile, CancellationToken cancellationToken)
+    {
+        var model = await _profileRepository.GetById(profile.UserId, cancellationToken);
+
+        model.Email = profile.Email;
+        model.FirstName = profile.FirstName;
+        model.LastName = profile.LastName;
+        model.ProfilePicture = profile.ProfilePicture;
+
+        await _profileRepository.Update(model, cancellationToken);
     }
 }

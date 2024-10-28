@@ -14,5 +14,6 @@ public static class ProfileMapper
             UserId = model.UserId,
             FriendsCount = model.Friends.Count,
             Friends = model.Friends,
+            ProfilePicture = model.ProfilePicture,
         };
 }

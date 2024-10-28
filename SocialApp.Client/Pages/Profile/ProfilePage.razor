@@ -2,92 +2,18 @@
 @inherits LoadingComponent
 
 <div class="profile-container">
-    <div class="profile-details">
-        <div class="pd-left">
-            <div class="pd-row">
-                <img src="images/photo.jpg" class="pd-image" alt="">
-                <div>
-                    @if (!Loading)
-                    {
-                        <h3>@_profile.FirstName @_profile.LastName</h3>
-                        <p>@_profile.FriendsCount friend(s)</p>
-                    }
-                    <img src="images/img-friend-1.png" alt="">
-                    <img src="images/img-friend-2.png" alt="">
-                    <img src="images/img-friend-3.png" alt="">
-                    <img src="images/img-friend-4.png" alt="">
-                </div>
-            </div>
-        </div>
+    @if (!Loading)
+    {
+        <ProfileDetailsComponent
+            Profile="_profile"
+            ProfileImagePreview="@_profileImagePreview"
+            OnProfilePhotoChange="OnProfilePhotoChange"/>
+    }
 
-        <div class="pd-right">
-            <a href="">
-                <img src="images/dots-horizontal-rounded-regular-24.png" alt="">
-            </a>
-        </div>
-    </div>
-
-    <div class="profile-info">
-        <div class="info-col">
-            <div class="profile-intro">
-                <h3>Intro</h3>
-                <p class="intro-text">oherhgeiugruiegheighr</p>
-                <hr>
-                <ul>
-                    <li>Pchil-Pcholin</li>
-                    <li>Have Pou bestfriend</li>
-                    <li>Zelena-banda</li>
-                </ul>
-            </div>
-
-            <div class="profile-intro">
-                <div class="title-box">
-                    <h3>Photos</h3>
-                    <a href="">All photos</a>
-                </div>
-                <div class="photo-box">
-                    <div>
-                        <img src="images/img-friend-1.png" alt="">
-                    </div>
-                    <div>
-                        <img src="images/img-friend-2.png" alt="">
-                    </div>
-                    <div>
-                        <img src="images/img-friend-3.png" alt="">
-                    </div>
-                    <div>
-                        <img src="images/img-friend-4.png" alt="">
-                    </div>
-                </div>
-            </div>
-
-            @if (!Loading)
-            {
-                <div class="profile-intro">
-                    <div class="title-box">
-                        <h3>Friends</h3>
-                        <a href="">All friends</a>
-                    </div>
-                    <p>@_profile.FriendsCount</p>
-                    <div class="friends-box">
-                        <div>
-                            <img src="images/img-friend-2.png" alt="">
-                            <p>Pes Patron</p>
-                        </div>
-                    </div>
-                </div>
-            }
-        </div>
-
-        <div class="post-col">
-            @if (!Loading)
-            {
-                <CreatePost OnPostCreated="PostCreated" Profile="_profile"/>
-                foreach (var post in _posts)
-                {
-                    <PostOverview Post="post" OnPostDeleted="PostDeleted"/>
-                }
-            }
-        </div>
-    </div>
+    <ProfileInfoComponent
+        Loading="Loading"
+        Posts="_posts"
+        Profile="_profile"
+        PostCreated="PostCreated"
+        PostDeleted="PostDeleted"/>
 </div>

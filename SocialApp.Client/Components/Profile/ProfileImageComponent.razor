@@ -1,0 +1,19 @@
+﻿<div class="profile-image-wrapper">
+    @if (!string.IsNullOrEmpty(ProfileImagePreview))
+    {
+        <img src="@ProfileImagePreview" class="pd-image" alt="Profile Picture" id="profilePicture">
+    }
+    else
+    {
+        <img
+            src="@ImageService.GetImageUrl(UserId, ProfilePicture)"
+            onerror="this.onerror=null;this.src='images/photo.jpg'"
+            class="pd-image"
+            alt="Profile Picture"
+            id="profilePicture">
+    }
+    <label for="uploadProfilePicture" class="edit-icon">
+        <img src="images/edit-icon.png" alt="Edit Profile Picture">
+    </label>
+    <InputFile id="uploadProfilePicture" accept="image/*" style="display: none;" OnChange="OnProfilePhotoChange"/>
+</div>

@@ -45,6 +45,7 @@ public class FriendHandler : IFriendHandler
                 FirstName = x.FirstName,
                 UserId = x.UserId,
                 LastName = x.LastName,
+                ProfilePicture = profile.ProfilePicture
             }
         }).ToList();
     }

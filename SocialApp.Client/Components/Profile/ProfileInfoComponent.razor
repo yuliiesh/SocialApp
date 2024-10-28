@@ -1,0 +1,67 @@
+﻿<div class="profile-info">
+    <div class="info-col">
+        <div class="profile-intro">
+            <h3>Intro</h3>
+            <p class="intro-text">oherhgeiugruiegheighr</p>
+            <hr>
+            <ul>
+                <li>Pchil-Pcholin</li>
+                <li>Have Pou bestfriend</li>
+                <li>Zelena-banda</li>
+            </ul>
+        </div>
+
+        <div class="profile-intro">
+            <div class="title-box">
+                <h3>Photos</h3>
+                <a href="">All photos</a>
+            </div>
+            <div class="photo-box">
+                <div>
+                    <img src="images/img-friend-1.png" alt="">
+                </div>
+                <div>
+                    <img src="images/img-friend-2.png" alt="">
+                </div>
+                <div>
+                    <img src="images/img-friend-3.png" alt="">
+                </div>
+                <div>
+                    <img src="images/img-friend-4.png" alt="">
+                </div>
+            </div>
+        </div>
+
+        @if (!Loading)
+        {
+            <div class="profile-intro">
+                <div class="title-box">
+                    <h3>Friends</h3>
+                    <a href="">All friends</a>
+                </div>
+                <p>@Profile.FriendsCount</p>
+                <div class="friends-box">
+                    <div>
+                        <img src="images/img-friend-2.png" alt="">
+                        <p>Pes Patron</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="post-col">
+        @if (!Loading)
+        {
+            if (!_isFriend)
+            {
+                <CreatePost OnPostCreated="PostCreated" Profile="Profile"/>
+            }
+
+            @foreach (var post in Posts)
+            {
+                <PostOverview Post="post" OnPostDeleted="PostDeleted"/>
+            }
+        }
+    </div>
+</div>

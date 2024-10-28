@@ -18,6 +18,7 @@
     <ItemGroup>
       <ProjectReference Include="..\SocialApp.Api\SocialApp.Api.csproj" />
       <ProjectReference Include="..\SocialApp.Client\SocialApp.Client.csproj" />
+      <ProjectReference Include="..\SocialApp.Media\SocialApp.Media.csproj" />
     </ItemGroup>
 
 </Project>

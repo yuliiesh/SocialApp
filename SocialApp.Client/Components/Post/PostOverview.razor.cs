@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 using SocialApp.Client.Components.Base;
 using SocialApp.Client.Extensions;
 using SocialApp.Client.Services;
@@ -13,7 +14,6 @@ public partial class PostOverview : LoadingComponent
     private bool _haveLike = false;
     private bool _isMenuOpen = false;
     private Guid _userId;
-    private string _newComment;
 
     private ICollection<CommentDto> _comments;
 
@@ -23,6 +23,7 @@ public partial class PostOverview : LoadingComponent
     [Inject] private ICommentService CommentService { get; set; }
     [Inject] private ILikeService LikeService { get; set; }
     [Inject] private ILocalStorageService LocalStorage { get; set; }
+    [Inject] private IImageService ImageService { get; set; }
 
     [Parameter] public PostDto Post { get; set; }
     [Parameter] public EventCallback<PostDto> OnPostDeleted { get; set; }
@@ -85,6 +86,12 @@ public partial class PostOverview : LoadingComponent
         {
             OnPostDeleted.InvokeAsync(Post);
         }
+        _isMenuOpen = false;
+    }
+
+    private async Task CloseMenu(FocusEventArgs e)
+    {
+        await Task.Delay(100);
         _isMenuOpen = false;
     }
 }

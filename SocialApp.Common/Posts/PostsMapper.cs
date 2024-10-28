@@ -17,6 +17,8 @@ public static class PostsMapper
             {
                 FirstName = profile?.FirstName,
                 LastName = profile?.LastName,
+                ProfilePicture = profile?.ProfilePicture,
+                UserId = profile?.UserId ?? Guid.Empty,
             }
         };
 
@@ -45,6 +47,8 @@ public static class PostsMapper
             {
                 FirstName = profile?.FirstName,
                 LastName = profile?.LastName,
+                ProfilePicture = profile?.ProfilePicture,
+                UserId = profile?.UserId ?? Guid.Empty,
             }
         };
 }

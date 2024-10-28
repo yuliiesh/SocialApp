@@ -1,0 +1,42 @@
+﻿.profile-image-wrapper {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+
+    .pd-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    .edit-icon {
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 6px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            width: 16px;
+            height: 16px;
+            filter: invert(1);
+        }
+    }
+
+    #uploadProfilePicture {
+        display: none;
+    }
+
+    #profilePicture {
+        margin: 0;
+        border-radius: 0;
+    }
+}

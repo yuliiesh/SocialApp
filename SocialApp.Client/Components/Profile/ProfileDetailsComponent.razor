@@ -1,0 +1,25 @@
+﻿<div class="profile-details">
+    <div class="pd-left">
+        <div class="pd-row">
+            <ProfileImageComponent
+                ProfileImagePreview="@ProfileImagePreview"
+                ProfilePicture="@Profile.ProfilePicture"
+                UserId="@Profile.UserId"
+                OnProfilePhotoChange="OnProfilePhotoChange"/>
+            <div class="profile-overview">
+                <h3>@Profile.FirstName @Profile.LastName</h3>
+                <p>@Profile.FriendsCount friend(s)</p>
+
+                <img src="images/img-friend-1.png" alt="">
+                <img src="images/img-friend-2.png" alt="">
+                <img src="images/img-friend-3.png" alt="">
+                <img src="images/img-friend-4.png" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="pd-right">
+        <a href="">
+            <img src="images/dots-horizontal-rounded-regular-24.png" alt="Options">
+        </a>
+    </div>
+</div>

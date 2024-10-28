@@ -1,6 +1,6 @@
 ﻿<div class="write-post-container">
     <div class="user-profile">
-        <img src="images/photo.jpg" alt="userPhoto" class="sidebar__image">
+        <img src="@ImageService.GetImageUrl(Profile.UserId, Profile.ProfilePicture)" alt="userPhoto" class="sidebar__image">
         <div>
             <p>@Profile.FirstName @Profile.LastName</p>
             <small>Public</small>

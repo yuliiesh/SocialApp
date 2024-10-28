@@ -7,8 +7,8 @@ public interface IProfileService
 {
     Task<ProfileDto> Get(string email);
     Task<ProfileDto> Get();
-
     Task<ProfileDto> GetByUsername(string username);
+    Task Update(ProfileDto profile);
 }
 
 public class ProfileService : IProfileService
@@ -33,4 +33,7 @@ public class ProfileService : IProfileService
 
     public async Task<ProfileDto> GetByUsername(string username) =>
         await _httpClient.GetFromJsonAsync<ProfileDto>($"/api/profiles?username={username}");
+
+    public async Task Update(ProfileDto profile) =>
+        await _httpClient.PutAsJsonAsync($"/api/profiles", profile);
 }

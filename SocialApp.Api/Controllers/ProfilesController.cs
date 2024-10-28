@@ -29,4 +29,11 @@ public class ProfilesController : ControllerBase
 
         return Ok(profileDto);
     }
+
+    [HttpPut]
+    public async Task<IActionResult> UpdateProfile([FromBody] ProfileDto profileDto)
+    {
+        await _profileHandler.Update(profileDto, HttpContext.RequestAborted);
+        return Ok();
+    }
 }

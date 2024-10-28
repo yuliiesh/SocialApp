@@ -40,6 +40,7 @@ public partial class CommentsComponent : ComponentBase
                 UserId = await LocalStorage.GetUserId(),
                 FirstName = profile.FirstName,
                 LastName = profile.LastName,
+                ProfilePicture = profile.ProfilePicture
             }
         };
 
