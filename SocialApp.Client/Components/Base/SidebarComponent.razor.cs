@@ -14,6 +14,7 @@ public partial class SidebarComponent : LoadingComponent
     [Inject] private UserAuthenticationStateProvider UserAuthenticationStateProvider { get; set; }
     [Inject] private NavigationManager NavigationManager { get; set; }
     [Inject] private ILocalStorageService LocalStorage { get; set; }
+    [Inject] private IImageService ImageService { get; set; }
 
     [Parameter] public HomePage.Tab Tab { get; set; }
     [Parameter] public EventCallback<HomePage.Tab> OnTabChanged { get; set; }

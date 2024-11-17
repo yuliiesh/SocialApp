@@ -3,11 +3,11 @@
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\SocialApp.Data\SocialApp.Data.csproj" />
-      <ProjectReference Include="..\SocialApp.GraphData\SocialApp.GraphData.csproj" />
+      <PackageReference Include="Neo4jClient" Version="5.1.17" />
     </ItemGroup>
 
 </Project>

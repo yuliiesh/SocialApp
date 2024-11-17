@@ -1,0 +1,29 @@
+﻿@inherits LoadingComponent
+
+@if (!Loading)
+{
+    <div class="profile-intro">
+        <div class="title-box">
+            <h3>Friends</h3>
+            <a>All friends</a>
+        </div>
+        <p>@(_friends?.Count() ?? 0) friends</p>
+        @if (_friends is not null)
+        {
+            <div class="friends-box">
+                @foreach (var friend in _friends.Take(4))
+                {
+                    <div class="friend-item">
+                        <button @onclick="() => ToFriend(friend.Username)">
+                            <img
+                                src="@ImageService.GetImageUrl(friend.UserId, friend.ProfilePicture)"
+                                onerror="this.onerror=null;this.src='images/photo.jpg'"
+                                alt="@friend.FirstName @friend.LastName"/>
+                            <p>@friend.FirstName @friend.LastName</p>
+                        </button>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+}

@@ -9,7 +9,8 @@ public interface IProfileRepository : IRepositoryBase<ProfileModel>
 {
     Task<ProfileModel> Get(string email, CancellationToken cancellationToken);
     Task<ProfileModel> GetByUsername(string username, CancellationToken cancellationToken);
-    Task<ImmutableDictionary<Guid, ProfileModel>> GetProfiles(ImmutableHashSet<Guid> userIds, CancellationToken cancellationToken);
+    Task<IReadOnlyCollection<ProfileModel>> Get(IReadOnlyCollection<Guid> profileIds, CancellationToken cancellationToken);
+    Task<ImmutableDictionary<Guid, ProfileModel>> GetProfiles(ISet<Guid> userIds, CancellationToken cancellationToken);
 }
 
 public sealed class ProfileRepository : RepositoryBase<ProfileModel>, IProfileRepository
@@ -35,7 +36,13 @@ public sealed class ProfileRepository : RepositoryBase<ProfileModel>, IProfileRe
         return await _collection.Find(filter).SingleOrDefaultAsync(cancellationToken);
     }
 
-    public async Task<ImmutableDictionary<Guid, ProfileModel>> GetProfiles(ImmutableHashSet<Guid> userIds, CancellationToken cancellationToken)
+    public async Task<IReadOnlyCollection<ProfileModel>> Get(IReadOnlyCollection<Guid> profileIds, CancellationToken cancellationToken)
+    {
+        var filter = Builders<ProfileModel>.Filter.In(x => x.UserId, profileIds);
+        return await _collection.Find(filter).ToListAsync(cancellationToken);
+    }
+
+    public async Task<ImmutableDictionary<Guid, ProfileModel>> GetProfiles(ISet<Guid> userIds, CancellationToken cancellationToken)
     {
         var filter = Builders<ProfileModel>.Filter.In(p => p.UserId, userIds);
         var cursor = await _collection

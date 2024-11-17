@@ -6,6 +6,7 @@ using SocialApp.Api;
 using SocialApp.Api.Migrations;
 using SocialApp.Common;
 using SocialApp.Data;
+using SocialApp.GraphData;
 
 BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
 
@@ -15,6 +16,15 @@ builder.Services.AddControllers();
 builder.Services.AddDatabase()
     .AddRepositories()
     .AddHandlers();
+
+builder.Services.AddTransient(provider =>
+{
+    var configuration = provider.GetService<IConfiguration>();
+    var uri = configuration["Neo4j:Uri"];
+    var username = configuration["Neo4j:Username"];
+    var password = configuration["Neo4j:Password"];
+    return new Neo4jDbContext(uri, username, password);
+});
 
 builder.AddServiceDefaults();
 

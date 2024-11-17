@@ -20,8 +20,6 @@ public partial class ProfileInfoComponent : ComponentBase
 
     protected override async Task OnParametersSetAsync()
     {
-        await base.OnParametersSetAsync();
-
         var currentUserId = await LocalStorage.GetUserId();
         _isFriend = currentUserId != Profile.UserId;
     }

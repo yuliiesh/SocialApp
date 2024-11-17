@@ -4,11 +4,14 @@
 <div class="profile-container">
     @if (!Loading)
     {
-        <ProfileDetailsComponent Profile="_profile"/>
-    }
+        <ProfileDetailsComponent
+            Profile="_profile"
+            AddToFriend="AddToFriend"
+            RemoveFromFriends="RemoveFromFriends"/>
 
-    <ProfileInfoComponent
-        Loading="Loading"
-        Posts="_posts"
-        Profile="_profile"/>
+        <ProfileInfoComponent
+            Loading="Loading"
+            Posts="_posts"
+            Profile="_profile"/>
+    }
 </div>

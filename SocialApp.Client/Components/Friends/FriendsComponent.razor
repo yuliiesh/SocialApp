@@ -13,10 +13,10 @@
         @foreach (var friend in _friends)
         {
             <div class="friend-card">
-                @* <img src="@friend.PhotoUrl" alt="Friend photo" class="friend-photo" /> *@
+                <img src="@ImageService.GetImageUrl(friend.Profile.UserId, friend.Profile.ProfilePicture)" alt="Friend photo" class="friend-photo" />
                 <div class="friend-info">
                     <h3>@friend.Profile.FirstName @friend.Profile.LastName</h3>
-                    <p>0 mutual friends</p>
+                    <p>@friend.MutualFriends.Count mutual friends</p>
                     <a href="/profile/@friend.Profile.Username" class="view-profile-btn">View profile</a>
                 </div>
             </div>

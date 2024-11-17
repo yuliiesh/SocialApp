@@ -10,7 +10,10 @@ else
     <div class="left">
         <a class="profile" href="/profile">
             <div class="profile-photo">
-                <img src="images/photo.jpg" alt="">
+                <img
+                    src="@ImageService.GetImageUrl(_profile.UserId, _profile.ProfilePicture)"
+                    onerror="this.onerror=null;this.src='images/photo.jpg'"
+                    alt="@_profile.FirstName @_profile.LastName">
             </div>
             <div class="handle">
                 <h4>@_profile.FirstName @_profile.LastName</h4>

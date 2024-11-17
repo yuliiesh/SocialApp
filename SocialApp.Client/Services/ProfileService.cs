@@ -7,6 +7,7 @@ public interface IProfileService
 {
     Task<ProfileDto> Get(string email);
     Task<ProfileDto> Get();
+    Task<IEnumerable<ProfileDto>> Get(IEnumerable<Guid> ids);
     Task<ProfileDto> GetByUsername(string username);
     Task Update(ProfileDto profile);
 }
@@ -26,6 +27,12 @@ public class ProfileService : IProfileService
     {
         var email = await _localStorageService.GetItem("email");
         return await Get(email);
+    }
+
+    public async Task<IEnumerable<ProfileDto>> Get(IEnumerable<Guid> profileIds)
+    {
+        var response =  await _httpClient.PostAsJsonAsync($"/api/profiles", profileIds);
+        return await response.Content.ReadFromJsonAsync<IEnumerable<ProfileDto>>();
     }
 
     public async Task<ProfileDto> Get(string email) =>

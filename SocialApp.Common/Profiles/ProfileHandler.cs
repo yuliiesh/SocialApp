@@ -10,6 +10,8 @@ public interface IProfileHandler
     Task<ProfileDto> GetByUsername(string username, CancellationToken cancellationToken);
     Task CreateProfile(CreateProfileRequest request, CancellationToken cancellationToken);
     Task Update(ProfileDto profile, CancellationToken cancellationToken);
+
+    Task<IReadOnlyCollection<ProfileDto>> Get(IReadOnlyCollection<Guid> profileIds, CancellationToken cancellationToken);
 }
 
 public class ProfileHandler : IProfileHandler
@@ -27,6 +29,8 @@ public class ProfileHandler : IProfileHandler
     public async Task<ProfileDto> GetByUsername(string email, CancellationToken cancellationToken) =>
         (await _profileRepository.GetByUsername(email, cancellationToken)).ToDto();
 
+    public async Task<IReadOnlyCollection<ProfileDto>> Get(IReadOnlyCollection<Guid> profileIds, CancellationToken cancellationToken) =>
+        (await _profileRepository.Get(profileIds, cancellationToken)).Select(x => x.ToDto()).ToList();
     public async Task CreateProfile(CreateProfileRequest request, CancellationToken cancellationToken)
     {
         var model = new ProfileModel

@@ -30,6 +30,13 @@ public class ProfilesController : ControllerBase
         return Ok(profileDto);
     }
 
+    [HttpPost]
+    public async Task<IActionResult> GetProfiles([FromBody] IReadOnlyCollection<Guid> profileIds)
+    {
+        var profiles = await _profileHandler.Get(profileIds, HttpContext.RequestAborted);
+        return Ok(profiles);
+    }
+
     [HttpPut]
     public async Task<IActionResult> UpdateProfile([FromBody] ProfileDto profileDto)
     {

@@ -15,6 +15,7 @@
     <ItemGroup>
       <ProjectReference Include="..\SocialApp.Common\SocialApp.Common.csproj" />
       <ProjectReference Include="..\SocialApp.Data\SocialApp.Data.csproj" />
+      <ProjectReference Include="..\SocialApp.GraphData\SocialApp.GraphData.csproj" />
       <ProjectReference Include="..\SocialApp.ServiceDefalts\SocialApp.ServiceDefalts.csproj" />
     </ItemGroup>
 

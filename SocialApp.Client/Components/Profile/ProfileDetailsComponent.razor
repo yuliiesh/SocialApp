@@ -9,15 +9,21 @@
             <div class="profile-overview">
                 <h3>@Profile.FirstName @Profile.LastName</h3>
                 <p>@Profile.FriendsCount friend(s)</p>
-
-                <img src="images/img-friend-1.png" alt="">
-                <img src="images/img-friend-2.png" alt="">
-                <img src="images/img-friend-3.png" alt="">
-                <img src="images/img-friend-4.png" alt="">
             </div>
         </div>
     </div>
     <div class="pd-right">
+        @if (!_owner)
+        {
+            @if (!_isFriend)
+            {
+                <button type="button" @onclick="AddToFriend"><img src="images/user-plus-solid-24.png" alt="">Friends</button>
+            }
+            else
+            {
+                <button type="button" @onclick="RemoveFromFriends"><img src="images/user-plus-solid-24.png" alt="">Unfriend</button>
+            }
+        }
         <a href="">
             <img src="images/dots-horizontal-rounded-regular-24.png" alt="Options">
         </a>

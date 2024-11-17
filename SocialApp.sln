@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialApp.Host", "SocialApp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialApp.Media", "SocialApp.Media\SocialApp.Media.csproj", "{198A6252-35E4-49AB-B6E2-37278EDEBCF0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialApp.GraphData", "SocialApp.GraphData\SocialApp.GraphData.csproj", "{EAF20DAA-4C7A-4329-8056-DE0211B4DCDC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{198A6252-35E4-49AB-B6E2-37278EDEBCF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{198A6252-35E4-49AB-B6E2-37278EDEBCF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{198A6252-35E4-49AB-B6E2-37278EDEBCF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAF20DAA-4C7A-4329-8056-DE0211B4DCDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAF20DAA-4C7A-4329-8056-DE0211B4DCDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAF20DAA-4C7A-4329-8056-DE0211B4DCDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAF20DAA-4C7A-4329-8056-DE0211B4DCDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D179110F-0F65-4E86-9EB8-0BF9771CA555} = {A27361FB-C564-4808-BA39-8A841F69D4B5}

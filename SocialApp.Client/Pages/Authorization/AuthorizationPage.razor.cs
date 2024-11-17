@@ -7,11 +7,11 @@ namespace SocialApp.Client.Pages.Authorization;
 
 public partial class AuthorizationPage : ComponentBase
 {
+    private bool _loginAction = true;
+
     [Inject] private HttpClient Client { get; set; }
     [Inject] private NavigationManager Navigation { get; set; }
     [Inject] private UserAuthenticationStateProvider AuthenticationStateProvider { get; set; }
-
-    private bool _loginAction = true;
 
     private async Task Login(LoginRequest loginRequest)
     {
@@ -19,7 +19,7 @@ public partial class AuthorizationPage : ComponentBase
         if (response.IsSuccessStatusCode)
         {
             await AuthenticationStateProvider.MarkUserAsAuthenticated(loginRequest.Email);
-            Navigation.NavigateTo("posts");
+            Navigation.NavigateTo("home");
         }
     }
 

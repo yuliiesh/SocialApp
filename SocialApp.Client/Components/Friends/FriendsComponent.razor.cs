@@ -13,6 +13,7 @@ public partial class FriendsComponent : LoadingComponent
 
     [Inject] private IFriendService FriendService { get; set; }
     [Inject] private ILocalStorageService LocalStorage { get; set; }
+    [Inject] private IImageService ImageService { get; set; }
 
     protected override async Task OnInitializedAsync()
     {

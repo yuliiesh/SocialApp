@@ -5,6 +5,7 @@ namespace SocialApp.Data.Repositories;
 
 public interface IRepositoryBase<T> where T : ModelBase
 {
+    IMongoCollection<T> GetCollection();
     Task<T> Save(T entity, CancellationToken cancellationToken);
 
     Task<T> GetById(Guid id, CancellationToken cancellationToken);
@@ -24,6 +25,8 @@ public class RepositoryBase<T> : IRepositoryBase<T> where T : ModelBase
     {
         _collection = dbContext.GetCollection<T>(collectionName);
     }
+
+    public IMongoCollection<T> GetCollection() => _collection;
 
     public async Task<T> Save(T entity, CancellationToken cancellationToken)
     {
